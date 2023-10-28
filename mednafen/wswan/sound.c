@@ -370,7 +370,11 @@ void WSwan_SoundInit(void)
    for(i = 0; i < 2; i++)
    {
       Blip_Buffer_init(&sbuf[i]);
+#if !defined(SF2000)
       Blip_Buffer_set_sample_rate(&sbuf[i], 44100, 60);
+#else
+      Blip_Buffer_set_sample_rate(&sbuf[i], 11025, 60);
+#endif
       Blip_Buffer_set_clock_rate(&sbuf[i], (long)(3072000));
       Blip_Buffer_bass_freq(&sbuf[i], 20);
    }
@@ -391,7 +395,11 @@ bool WSwan_SetSoundRate(uint32 rate)
 {
    unsigned i;
    for(i = 0; i < 2; i++)
+#if !defined(SF2000)
       Blip_Buffer_set_sample_rate(&sbuf[i], rate ? rate : 44100, 60);
+#else
+      Blip_Buffer_set_sample_rate(&sbuf[i], rate ? rate : 11025, 60);
+#endif
 
    return(true);
 }

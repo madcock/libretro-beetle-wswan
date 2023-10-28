@@ -42,7 +42,11 @@ void MDFN_LoadGameCheats(void *override_ptr);
 void MDFN_FlushGameCheats(int nosave);
 
 /* core options */
+#if !defined(SF2000)
 static int RETRO_SAMPLE_RATE = 44100;
+#else
+static int RETRO_SAMPLE_RATE = 11025;
+#endif
 
 static int RETRO_PIX_BYTES = 2;
 static int RETRO_PIX_DEPTH = 15;

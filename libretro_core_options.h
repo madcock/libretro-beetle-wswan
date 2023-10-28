@@ -209,7 +209,11 @@ struct retro_core_option_v2_definition option_defs_us[] = {
          { "48000",  NULL },
          { NULL, NULL },
       },
+#if !defined(SF2000)
       "44100",
+#else
+      "11025",
+#endif
    },
    {
       "wswan_sound_low_pass",
